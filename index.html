@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Edition — Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #e8e8e8; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; }
+  h1 { font-family: 'Fraunces', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 0.5rem; background: linear-gradient(135deg, #f59e0b, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { font-size: 1.1rem; color: #888; margin-bottom: 3rem; }
+  .issues { list-style: none; width: 100%; max-width: 600px; }
+  .issues li { margin-bottom: 1rem; }
+  .issues a { display: block; padding: 1.2rem 1.5rem; background: #161616; border: 1px solid #222; border-radius: 12px; color: #e8e8e8; text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: all 0.2s; }
+  .issues a:hover { background: #1a1a1a; border-color: #f59e0b; transform: translateX(4px); }
+  .issues .date { color: #666; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<h1>Morning Edition</h1>
+<p class="sub">Daily curated tech magazine</p>
+<ul class="issues" id="issues"></ul>
+<script>
+// Auto-populate from magazines/ directory listing
+// This will be updated by the generator script
+const issues = ISSUE_LIST_PLACEHOLDER;
+const ul = document.getElementById('issues');
+issues.forEach(i => {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = 'magazines/' + i.file;
+  a.innerHTML = '<span class="date">' + i.date + '</span> — ' + i.title;
+  li.appendChild(a);
+  ul.appendChild(li);
+});
+</script>
+</body>
+</html>
